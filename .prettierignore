@@ -1,0 +1,24 @@
+# Build artifacts
+.next/
+out/
+build/
+
+# Dependencies
+node_modules/
+
+# Generated files
+*.tsbuildinfo
+next-env.d.ts
+pnpm-lock.yaml
+
+# Migrations (Drizzle-generated SQL)
+migrations/
+
+# Test artifacts
+coverage/
+playwright-report/
+test-results/
+
+# Env files
+.env*
+!.env.example

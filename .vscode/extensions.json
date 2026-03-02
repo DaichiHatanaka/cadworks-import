@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "drizzle-team.vscode-drizzle-orm",
+    "ms-playwright.playwright",
+    "vitest.explorer",
+    "EditorConfig.EditorConfig",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense"
+  ]
+}
