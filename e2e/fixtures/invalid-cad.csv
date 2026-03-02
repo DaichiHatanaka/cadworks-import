@@ -1,0 +1,4 @@
+id,jobNo,listType,kid,idCount,kikiNo,kikiBame,qtyOrd,shortSpec,cwxLinkedFlg
+test-cad-001,TEST-2024-002,標準,K001,1,AC-001,エアコン室内機,2,壁掛け型 2.8kW,
+test-cad-001,TEST-2024-002,標準,K002,1,VN-100,換気扇,3,天井埋込型 100φ,
+test-cad-003,TEST-2024-002,標準,,1,LT-200,照明器具,5,LED 40W相当,

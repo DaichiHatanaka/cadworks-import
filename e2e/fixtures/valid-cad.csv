@@ -1,0 +1,4 @@
+id,jobNo,listType,kid,idCount,kikiNo,kikiBame,qtyOrd,shortSpec,cwxLinkedFlg
+test-cad-001,TEST-2024-001,L002,K001,1,P-001,ポンプ,2,遠心ポンプ 5kW,
+test-cad-002,TEST-2024-001,L002,K002,1,P-002,真空ポンプ,3,液封式 1.5kW,
+test-cad-003,TEST-2024-001,L002,K003,1,P-003,薬注ポンプ,5,電磁式 0.5kW,

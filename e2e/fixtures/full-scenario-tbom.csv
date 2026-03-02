@@ -1,0 +1,28 @@
+id,jobNo,listType,kid,idCount,kikiNo,kikiBame,qtyOrd,shortSpec
+tbom-ft-001,FULL-TEST-001,L002,K001,1,P-001,横型渦巻ポンプ,2,横型渦巻ポンプ SUS304 Q=5.0m3/h H=20m
+tbom-ft-002,FULL-TEST-001,L002,K002,1,P-002,ダイヤフラムポンプ,1,ダイヤフラム PP Q=3.0m3/h
+tbom-ft-003,FULL-TEST-001,L002,K003,1,P-003,マグネットポンプ,1,マグネット PP
+tbom-ft-004,FULL-TEST-001,L002,K004,5000004,P-004,横型渦巻ポンプ,1,横型渦巻ポンプ SUS316
+tbom-ft-005,FULL-TEST-001,L002,K005,8000005,P-005,ダイヤフラムポンプ,1,ダイヤフラム SUS316
+tbom-ft-006,FULL-TEST-001,L002,K008,1,P-008,ポンプ,1,
+tbom-ft-007,FULL-TEST-001,L002,K009,1,P-009,横型渦巻ポンプ,1,横型渦巻ポンプ SUS304 EBARA-FSA-32
+tbom-ft-008,FULL-TEST-001,L002,K050,1,P-050,予備ポンプ,1,マグネット SUS316
+tbom-ft-009,FULL-TEST-001,L002,K051,1,P-051,ブースターポンプ,1,横型渦巻ポンプ SUS304 Q=10.0m3/h H=30m
+tbom-ft-010,FULL-TEST-001,L072,K010,1,T-001,PP製タンク,1,円筒型 PP 呼び容量200L
+tbom-ft-011,FULL-TEST-001,L072,K011,1,T-002,PVDF製タンク,1,角型 PVDF 呼び容量300L
+tbom-ft-012,FULL-TEST-001,L051,K012,1,HX-001,熱交換器,1,シェルアンドチューブ SUS304
+tbom-ft-013,FULL-TEST-001,L051,K013,1,HX-002,プレート式熱交換器,1,プレート式 SUS316
+tbom-ft-014,FULL-TEST-001,L071,K014,1,V-001,竪型ベッセル,1,竪型 SUS304 呼び容量500L
+tbom-ft-015,FULL-TEST-001,L071,K015,1,V-002,竪型ベッセル,1,竪型 SUS316L 呼び容量300L
+tbom-ft-016,FULL-TEST-001,L009,K016,1,VF-001,換気扇,3,天井埋込型 150φ
+tbom-ft-017,FULL-TEST-001,L009,K060,1,VF-060,工場換気扇,1,大型 500φ
+tbom-ft-018,FULL-TEST-001,L121,K100,1,FI-101A~C,流量計,3,電磁式 80A
+tbom-ft-019,FULL-TEST-001,L121,K101,1,"FI-102A,B",流量計,2,超音波式 50A
+tbom-ft-020,FULL-TEST-001,L122,K102,1,PI-201A/B/C,圧力計,3,ブルドン管式
+tbom-ft-021,FULL-TEST-001,L151,K103,1,CV-301A～D,自動弁,4,バタフライ弁 100A
+tbom-ft-022,FULL-TEST-001,L152,K104,1,HV-401A~E,手動弁,5,ゲート弁 50A
+tbom-ft-023,FULL-TEST-001,L841,K108,1,"TE-801A,B,C",温度検出器,3,Pt100 熱電対
+tbom-ft-024,FULL-TEST-001,L162,K109,1,ST-901A/B,円錐ストレーナー,2,SUS304 50A
+tbom-ft-025,FULL-TEST-001,L121,K105,1,FI-501,流量計,2,面積式 25A
+tbom-ft-026,FULL-TEST-001,L122,K106,1,PI-601A-C,圧力計,3,隔膜式
+tbom-ft-027,FULL-TEST-001,L121,K107,1,FI-701A~D,流量計,3,コリオリ式

@@ -1,0 +1,414 @@
+{
+  "id": "c5265ee3-b73d-4555-9ccb-b8dc2c418a2c",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.cwx_data": {
+      "name": "cwx_data",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "job_no": {
+          "name": "job_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "list_type": {
+          "name": "list_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kid": {
+          "name": "kid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_count": {
+          "name": "id_count",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kiki_no": {
+          "name": "kiki_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kiki_bame": {
+          "name": "kiki_bame",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "qty_ord": {
+          "name": "qty_ord",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "short_spec": {
+          "name": "short_spec",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cwx_linked_flg": {
+          "name": "cwx_linked_flg",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "cwx_data_job_no_idx": {
+          "name": "cwx_data_job_no_idx",
+          "columns": [
+            {
+              "expression": "job_no",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "cwx_data_job_list_type_idx": {
+          "name": "cwx_data_job_list_type_idx",
+          "columns": [
+            {
+              "expression": "job_no",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "list_type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.job_locks": {
+      "name": "job_locks",
+      "schema": "",
+      "columns": {
+        "job_no": {
+          "name": "job_no",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "locked_by_user_id": {
+          "name": "locked_by_user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "locked_by_user_name": {
+          "name": "locked_by_user_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "locked_at": {
+          "name": "locked_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lock_token": {
+          "name": "lock_token",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "job_locks_expires_at_idx": {
+          "name": "job_locks_expires_at_idx",
+          "columns": [
+            {
+              "expression": "expires_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.link_results": {
+      "name": "link_results",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "job_no": {
+          "name": "job_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cad_id": {
+          "name": "cad_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tbom_id": {
+          "name": "tbom_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "link_results_job_no_idx": {
+          "name": "link_results_job_no_idx",
+          "columns": [
+            {
+              "expression": "job_no",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "link_results_cad_id_idx": {
+          "name": "link_results_cad_id_idx",
+          "columns": [
+            {
+              "expression": "cad_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "link_results_cad_id_cwx_data_id_fk": {
+          "name": "link_results_cad_id_cwx_data_id_fk",
+          "tableFrom": "link_results",
+          "tableTo": "cwx_data",
+          "columnsFrom": [
+            "cad_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "link_results_tbom_id_tbom_data_id_fk": {
+          "name": "link_results_tbom_id_tbom_data_id_fk",
+          "tableFrom": "link_results",
+          "tableTo": "tbom_data",
+          "columnsFrom": [
+            "tbom_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.tbom_data": {
+      "name": "tbom_data",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "job_no": {
+          "name": "job_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "list_type": {
+          "name": "list_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kid": {
+          "name": "kid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_count": {
+          "name": "id_count",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kiki_no": {
+          "name": "kiki_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kiki_bame": {
+          "name": "kiki_bame",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "qty_ord": {
+          "name": "qty_ord",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "short_spec": {
+          "name": "short_spec",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "tbom_data_job_no_idx": {
+          "name": "tbom_data_job_no_idx",
+          "columns": [
+            {
+              "expression": "job_no",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tbom_data_job_list_type_idx": {
+          "name": "tbom_data_job_list_type_idx",
+          "columns": [
+            {
+              "expression": "job_no",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "list_type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": ["Bash(source:*)", "Bash(test:*)", "Bash(set:*)", "Bash(node -e:*)"]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["neon", "vercel", "github", "context7", "playwright"]
+}

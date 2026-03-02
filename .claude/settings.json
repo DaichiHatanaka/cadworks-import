@@ -5,7 +5,16 @@
       "Bash(npx drizzle-kit:*)",
       "Bash(git:*)",
       "Bash(vercel:*)",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "Bash(corepack enable)",
+      "Bash(corepack prepare pnpm@latest --activate)",
+      "Bash(npm install -g pnpm)",
+      "mcp__Neon__list_projects",
+      "mcp__Neon__run_sql_transaction",
+      "mcp__Neon__run_sql",
+      "Bash(DATABASE_URL=\"postgresql://neondb_owner:npg_ef42lNopVnWj@ep-jolly-leaf-aidv55rm-pooler.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require\" pnpm drizzle-kit migrate)",
+      "Bash(node -e \" const fs = require\\(''fs''\\); // Drizzle kit のバイナリから migrate 関数のロジックを探す const content = fs.readFileSync\\(''c:/Users/畠中大地/cadworks-import/node_modules/.pnpm/drizzle-kit@0.31.9/node_modules/drizzle-kit/bin.cjs'', ''utf8''\\); // __drizzle_migrations テーブルに関する部分を探す const idx = content.indexOf\\(''__drizzle_migrations''\\); console.log\\(content.substring\\(Math.max\\(0, idx-200\\), idx+500\\)\\); \")",
+      "Bash(node -e \":*)"
     ]
   },
   "enabledPlugins": {
