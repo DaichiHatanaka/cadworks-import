@@ -39,7 +39,7 @@ function makeTbom(overrides: Partial<TbomRecord> = {}): TbomRecord {
 
 describe("executeAutoLink", () => {
   describe("ID_COUNT 完全一致パターン", () => {
-    it("LIST_TYPE・KID・ID_COUNT がすべて一致する場合、saved ステータスでペアを生成する", () => {
+    it("LIST_TYPE・KID・ID_COUNT がすべて一致する場合、unsaved ステータスでペアを生成する", () => {
       const cad = makeCad({ idCount: "1234567890" });
       const tbom = makeTbom({ idCount: "1234567890" });
 
@@ -48,7 +48,7 @@ describe("executeAutoLink", () => {
       expect(result.linkedPairs).toHaveLength(1);
       expect(result.linkedPairs[0].cad).toBe(cad);
       expect(result.linkedPairs[0].tbom).toBe(tbom);
-      expect(result.linkedPairs[0].status).toBe("saved");
+      expect(result.linkedPairs[0].status).toBe("unsaved");
       expect(result.unlinkedCad).toHaveLength(0);
       expect(result.unlinkedTbom).toHaveLength(0);
     });
@@ -81,7 +81,7 @@ describe("executeAutoLink", () => {
 
       expect(result.linkedPairs).toHaveLength(1);
       expect(result.linkedPairs[0].tbom).toBe(tbomExact);
-      expect(result.linkedPairs[0].status).toBe("saved");
+      expect(result.linkedPairs[0].status).toBe("unsaved");
       expect(result.unlinkedTbom).toHaveLength(1);
       expect(result.unlinkedTbom[0]).toBe(tbomPartial);
     });
@@ -190,11 +190,11 @@ describe("executeAutoLink", () => {
 
       const result = executeAutoLink([cadA, cadB, cadC], [tbomA, tbomB, tbomD]);
 
-      // cadA + tbomA: LIST_TYPE=LT-A, KID=K001, ID_COUNT完全一致 → saved
+      // cadA + tbomA: LIST_TYPE=LT-A, KID=K001, ID_COUNT完全一致 → unsaved
       const pairA = result.linkedPairs.find((p) => p.cad.id === "cad-a");
       expect(pairA).toBeDefined();
       expect(pairA!.tbom!.id).toBe("tbom-a");
-      expect(pairA!.status).toBe("saved");
+      expect(pairA!.status).toBe("unsaved");
 
       // cadB + tbomB: LIST_TYPE=LT-B, KID=K002, ID_COUNT下5桁一致(12345) → unsaved
       const pairB = result.linkedPairs.find((p) => p.cad.id === "cad-b");
@@ -246,11 +246,11 @@ describe("executeAutoLink", () => {
 
       const pair1 = result.linkedPairs.find((p) => p.cad.id === "cad-1");
       expect(pair1!.tbom!.id).toBe("tbom-1");
-      expect(pair1!.status).toBe("saved");
+      expect(pair1!.status).toBe("unsaved");
 
       const pair2 = result.linkedPairs.find((p) => p.cad.id === "cad-2");
       expect(pair2!.tbom!.id).toBe("tbom-2");
-      expect(pair2!.status).toBe("saved");
+      expect(pair2!.status).toBe("unsaved");
     });
   });
 
@@ -320,7 +320,7 @@ describe("executeAutoLink", () => {
 
       expect(result.linkedPairs).toHaveLength(1);
       expect(result.linkedPairs[0].tbom!.id).toBe("tbom-exact");
-      expect(result.linkedPairs[0].status).toBe("saved");
+      expect(result.linkedPairs[0].status).toBe("unsaved");
       expect(result.unlinkedTbom).toHaveLength(1);
       expect(result.unlinkedTbom[0].id).toBe("tbom-partial");
     });

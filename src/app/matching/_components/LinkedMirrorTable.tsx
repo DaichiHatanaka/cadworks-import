@@ -107,12 +107,12 @@ export function LinkedMirrorTable({
       // CAD 側
       {
         id: "cad-listType",
-        header: () => <span className="font-semibold text-[#1565C0]">CAD - リストタイプ</span>,
+        header: () => <span className="font-semibold">CAD - リストタイプ</span>,
         accessorFn: (row) => row.cad.listType,
       },
       {
         id: "cad-kikiNo",
-        header: () => <span className="font-semibold text-[#1565C0]">CAD - 機器番号</span>,
+        header: () => <span className="font-semibold">CAD - 機器番号</span>,
         accessorFn: (row) => row.cad.kikiNo,
         cell: ({ row }) => {
           const cad = row.original.cad;
@@ -127,7 +127,7 @@ export function LinkedMirrorTable({
       },
       {
         id: "cad-kikiBame",
-        header: () => <span className="font-semibold text-[#1565C0]">CAD - 機器名称</span>,
+        header: () => <span className="font-semibold">CAD - 機器名称</span>,
         accessorFn: (row) => row.cad.kikiBame,
         cell: ({ row }) => {
           const cad = row.original.cad;
@@ -142,7 +142,7 @@ export function LinkedMirrorTable({
       },
       {
         id: "cad-qtyOrd",
-        header: () => <span className="font-semibold text-[#1565C0]">CAD - 数量</span>,
+        header: () => <span className="font-semibold">CAD - 数量</span>,
         accessorFn: (row) => row.cad.qtyOrd,
         cell: ({ row }) => {
           const cad = row.original.cad;
@@ -157,7 +157,7 @@ export function LinkedMirrorTable({
       },
       {
         id: "cad-shortSpec",
-        header: () => <span className="font-semibold text-[#1565C0]">CAD - 概略仕様</span>,
+        header: () => <span className="font-semibold">CAD - 概略仕様</span>,
         accessorFn: (row) => row.cad.shortSpec || "",
         cell: ({ row }) => {
           const cad = row.original.cad;
@@ -173,7 +173,7 @@ export function LinkedMirrorTable({
       // T-BOM 側
       {
         id: "tbom-listType",
-        header: () => <span className="font-semibold text-[#00695C]">T-BOM - リストタイプ</span>,
+        header: () => <span className="font-semibold">T-BOM - リストタイプ</span>,
         accessorFn: (row) => row.tbom?.listType || "",
         cell: ({ row }) => {
           const tbom = row.original.tbom;
@@ -186,7 +186,7 @@ export function LinkedMirrorTable({
       },
       {
         id: "tbom-kikiNo",
-        header: () => <span className="font-semibold text-[#00695C]">T-BOM - 機器番号</span>,
+        header: () => <span className="font-semibold">T-BOM - 機器番号</span>,
         accessorFn: (row) => row.tbom?.kikiNo || "",
         cell: ({ row }) => {
           const tbom = row.original.tbom;
@@ -199,7 +199,7 @@ export function LinkedMirrorTable({
       },
       {
         id: "tbom-kikiBame",
-        header: () => <span className="font-semibold text-[#00695C]">T-BOM - 機器名称</span>,
+        header: () => <span className="font-semibold">T-BOM - 機器名称</span>,
         accessorFn: (row) => row.tbom?.kikiBame || "",
         cell: ({ row }) => {
           const tbom = row.original.tbom;
@@ -212,7 +212,7 @@ export function LinkedMirrorTable({
       },
       {
         id: "tbom-qtyOrd",
-        header: () => <span className="font-semibold text-[#00695C]">T-BOM - 数量</span>,
+        header: () => <span className="font-semibold">T-BOM - 数量</span>,
         accessorFn: (row) => row.tbom?.qtyOrd || "",
         cell: ({ row }) => {
           const tbom = row.original.tbom;
@@ -225,7 +225,7 @@ export function LinkedMirrorTable({
       },
       {
         id: "tbom-shortSpec",
-        header: () => <span className="font-semibold text-[#00695C]">T-BOM - 概略仕様</span>,
+        header: () => <span className="font-semibold">T-BOM - 概略仕様</span>,
         accessorFn: (row) => row.tbom?.shortSpec || "",
         cell: ({ row }) => {
           const tbom = row.original.tbom;

@@ -21,6 +21,8 @@ export function ImportForm() {
   const [warnings, setWarnings] = useState<ValidationWarning[]>([]);
   const [jobNo, setJobNo] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [hasConflict, setHasConflict] = useState(false);
+  const [resettingAndRetrying, setResettingAndRetrying] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -77,6 +79,31 @@ export function ImportForm() {
     }
   };
 
+  const executeImport = async (): Promise<boolean> => {
+    const response = await fetch("/api/import/execute", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ dataType, jobNo, rows: previewData }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+      setState("success");
+      setHasConflict(false);
+      return true;
+    } else if (response.status === 409) {
+      setErrorMessage(result.error || "データが既に存在します");
+      setHasConflict(true);
+      setState("preview");
+      return false;
+    } else {
+      setErrorMessage(result.error || "インポートに失敗しました");
+      setState("error");
+      return false;
+    }
+  };
+
   const handleExecute = async () => {
     if (previewData.length === 0 || !jobNo) {
       setErrorMessage("インポートするデータがありません");
@@ -90,35 +117,46 @@ export function ImportForm() {
 
     setState("executing");
     setErrorMessage("");
+    setHasConflict(false);
 
     try {
-      const response = await fetch("/api/import/execute", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          dataType,
-          jobNo,
-          rows: previewData,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        setState("success");
-      } else if (response.status === 409) {
-        setErrorMessage(result.error || "データが既に存在します");
-        setState("preview");
-      } else {
-        setErrorMessage(result.error || "インポートに失敗しました");
-        setState("error");
-      }
+      await executeImport();
     } catch (error) {
       console.error("Execute error:", error);
       setErrorMessage("インポート中にエラーが発生しました");
       setState("error");
+    }
+  };
+
+  const handleResetAndRetry = async () => {
+    if (!jobNo) return;
+
+    setResettingAndRetrying(true);
+    setErrorMessage("");
+    setHasConflict(false);
+
+    try {
+      const resetRes = await fetch("/api/jobs/reset", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jobNo }),
+      });
+
+      if (!resetRes.ok) {
+        const resetResult = await resetRes.json();
+        setErrorMessage(resetResult.error || "リセットに失敗しました");
+        setState("preview");
+        return;
+      }
+
+      setState("executing");
+      await executeImport();
+    } catch (error) {
+      console.error("Reset and retry error:", error);
+      setErrorMessage("リセット＆再インポート中にエラーが発生しました");
+      setState("error");
+    } finally {
+      setResettingAndRetrying(false);
     }
   };
 
@@ -130,6 +168,7 @@ export function ImportForm() {
     setWarnings([]);
     setJobNo("");
     setErrorMessage("");
+    setHasConflict(false);
   };
 
   // Success view
@@ -148,10 +187,18 @@ export function ImportForm() {
               ホームへ戻る
             </button>
             <button
-              onClick={() => router.push("/matching")}
+              onClick={() => {
+                const params = new URLSearchParams({
+                  jobNo,
+                  caseNo: "CASE01",
+                  constructionType: "NEW",
+                  listTypes: "ALL",
+                });
+                router.push(`/matching?${params.toString()}`);
+              }}
               className="rounded-lg bg-blue-600 px-6 py-2 font-medium text-white hover:bg-blue-700"
             >
-              マッチング画面へ
+              マスター作成画面へ
             </button>
           </div>
         </div>
@@ -264,7 +311,18 @@ export function ImportForm() {
             {/* Conflict Error */}
             {errorMessage && (
               <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
-                {errorMessage}
+                <p>{errorMessage}</p>
+                {hasConflict && (
+                  <button
+                    onClick={handleResetAndRetry}
+                    disabled={resettingAndRetrying}
+                    className="mt-3 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+                  >
+                    {resettingAndRetrying
+                      ? "リセット＆再インポート中..."
+                      : "既存データをリセットして再インポート"}
+                  </button>
+                )}
               </div>
             )}
           </div>

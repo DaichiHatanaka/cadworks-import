@@ -28,7 +28,7 @@ describe("GET /api/locks/status/[jobNo]", () => {
     (getDb as ReturnType<typeof vi.fn>).mockReturnValue(mockDb);
 
     const request = new Request("http://localhost:3000/api/locks/status/JOB001");
-    const response = await GET(request, { params: { jobNo: "JOB001" } });
+    const response = await GET(request, { params: Promise.resolve({ jobNo: "JOB001" }) });
     const data = await response.json();
 
     expect(response.status).toBe(200);
@@ -48,7 +48,7 @@ describe("GET /api/locks/status/[jobNo]", () => {
     (getDb as ReturnType<typeof vi.fn>).mockReturnValue(mockDb);
 
     const request = new Request("http://localhost:3000/api/locks/status/JOB002");
-    const response = await GET(request, { params: { jobNo: "JOB002" } });
+    const response = await GET(request, { params: Promise.resolve({ jobNo: "JOB002" }) });
     const data = await response.json();
 
     expect(response.status).toBe(200);

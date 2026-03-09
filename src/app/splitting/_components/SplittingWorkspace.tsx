@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { parseKikiNo } from "@/lib/splitting/split-logic";
 import { SplittingTable } from "./SplittingTable";
+import { saveWorkspaceParams } from "@/lib/workspace-params";
 import type { SplitCandidate, SplitCandidatesResponse } from "@/lib/splitting/types";
 
 interface SplittingWorkspaceProps {
@@ -12,6 +13,11 @@ interface SplittingWorkspaceProps {
 
 export function SplittingWorkspace({ jobNo }: SplittingWorkspaceProps) {
   const router = useRouter();
+
+  useEffect(() => {
+    saveWorkspaceParams({ jobNo });
+  }, [jobNo]);
+
   const [candidates, setCandidates] = useState<SplitCandidate[]>([]);
   const [stats, setStats] = useState({ total: 0, autoCount: 0, manualCount: 0 });
   const [isLoading, setIsLoading] = useState(true);
@@ -187,7 +193,7 @@ export function SplittingWorkspace({ jobNo }: SplittingWorkspaceProps) {
           }
           className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-blue-700"
         >
-          マッチングへ進む →
+          マスター作成へ進む →
         </button>
       </div>
     </div>

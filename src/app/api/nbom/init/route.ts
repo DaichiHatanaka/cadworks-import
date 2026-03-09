@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { eq, and } from "drizzle-orm";
+import { eq, and, notInArray } from "drizzle-orm";
 import { z } from "zod";
 import { getDb } from "@/db";
 import {
@@ -31,24 +31,43 @@ export async function GET(request: NextRequest) {
     const { jobNo } = validation.data;
     const db = getDb();
 
-    // 既に cost_items が存在するか確認
-    const existing = await db.select().from(costItems).where(eq(costItems.jobNo, jobNo)).limit(1);
+    // 既に cost_items 化済みの linkResult ID を取得
+    const existingItems = await db
+      .select({ linkResultId: costItems.linkResultId })
+      .from(costItems)
+      .where(and(eq(costItems.jobNo, jobNo), eq(costItems.sourceType, "link_result")));
 
-    if (existing.length > 0) {
-      return NextResponse.json({ status: "existing", jobNo });
-    }
+    const existingLinkIds = existingItems
+      .map((e) => e.linkResultId)
+      .filter((id): id is string => id !== null);
 
-    // link_results から cost_items を自動生成
-    const links = await db
-      .select()
-      .from(linkResults)
-      .where(and(eq(linkResults.jobNo, jobNo), eq(linkResults.status, "saved")));
+    // 全 saved linkResults のうち、まだ costItems 化されていないものを取得
+    const links =
+      existingLinkIds.length > 0
+        ? await db
+            .select()
+            .from(linkResults)
+            .where(
+              and(
+                eq(linkResults.jobNo, jobNo),
+                eq(linkResults.status, "saved"),
+                notInArray(linkResults.id, existingLinkIds),
+              ),
+            )
+        : await db
+            .select()
+            .from(linkResults)
+            .where(and(eq(linkResults.jobNo, jobNo), eq(linkResults.status, "saved")));
 
-    if (links.length === 0) {
+    if (links.length === 0 && existingLinkIds.length === 0) {
       return NextResponse.json(
-        { error: "紐付け済みデータが見つかりません。先にマッチングを完了してください。" },
+        { error: "紐付け済みデータが見つかりません。先にマスター作成を完了してください。" },
         { status: 404 },
       );
+    }
+
+    if (links.length === 0) {
+      return NextResponse.json({ status: "existing", jobNo });
     }
 
     // CAD・T-BOM データを取得
@@ -62,14 +81,25 @@ export async function GET(request: NextRequest) {
     const masters = await db.select().from(listTypeMaster);
     const masterMap = new Map(masters.map((m) => [m.listType, m]));
 
-    // リストタイプ別にフォルダを自動作成
+    // 既存フォルダを取得
+    const existingFolders = await db
+      .select()
+      .from(costItemFolders)
+      .where(eq(costItemFolders.jobNo, jobNo));
+
+    const folderMap = new Map<string, string>();
+    for (const f of existingFolders) {
+      // name からリストタイプを逆引き（folder ID のパターンから取得）
+      folderMap.set(f.id.replace(`folder-${jobNo}-`, ""), f.id);
+    }
+
+    // 新しいリストタイプ用のフォルダを作成
     const listTypesUsed = new Set<string>();
     for (const link of links) {
       const cad = cwxMap.get(link.cadId);
       if (cad) listTypesUsed.add(cad.listType);
     }
 
-    const folderMap = new Map<string, string>(); // listType → folderId
     const folderInserts: {
       id: string;
       jobNo: string;
@@ -78,8 +108,9 @@ export async function GET(request: NextRequest) {
       sortOrder: number;
     }[] = [];
 
-    let sortIdx = 0;
+    let sortIdx = existingFolders.length;
     for (const lt of listTypesUsed) {
+      if (folderMap.has(lt)) continue; // 既存フォルダはスキップ
       const master = masterMap.get(lt);
       const folderId = `folder-${jobNo}-${lt}`;
       folderInserts.push({
@@ -96,9 +127,19 @@ export async function GET(request: NextRequest) {
       await db.insert(costItemFolders).values(folderInserts);
     }
 
+    // 既存 costItems の最大 sortOrder を取得
+    const maxSortResult =
+      existingItems.length > 0
+        ? await db
+            .select({ sortOrder: costItems.sortOrder })
+            .from(costItems)
+            .where(eq(costItems.jobNo, jobNo))
+        : [];
+    let itemSort =
+      maxSortResult.length > 0 ? Math.max(...maxSortResult.map((r) => r.sortOrder)) + 1 : 0;
+
     // cost_items を生成
     const itemInserts: (typeof costItems.$inferInsert)[] = [];
-    let itemSort = 0;
 
     for (const link of links) {
       const cad = cwxMap.get(link.cadId);
@@ -134,10 +175,11 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({
-      status: "created",
+      status: existingLinkIds.length > 0 ? "synced" : "created",
       jobNo,
       itemCount: itemInserts.length,
       folderCount: folderInserts.length,
+      existingCount: existingLinkIds.length,
     });
   } catch (error) {
     console.error("N-BOM init error:", error);

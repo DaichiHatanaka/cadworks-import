@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { DndContext, DragEndEvent, DragOverlay } from "@dnd-kit/core";
+import { saveWorkspaceParams } from "@/lib/workspace-params";
 import { MatchingHeader } from "./MatchingHeader";
 import { CadUnlinkedTable } from "./CadUnlinkedTable";
 import { TbomUnlinkedTable } from "./TbomUnlinkedTable";
@@ -27,6 +28,10 @@ export function MatchingWorkspace({
   constructionType,
   listTypes,
 }: MatchingWorkspaceProps) {
+  useEffect(() => {
+    saveWorkspaceParams({ jobNo, caseNo, constructionType, listTypes });
+  }, [jobNo, caseNo, constructionType, listTypes]);
+
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [screenTitle, setScreenTitle] = useState("CADWorx データ紐付け");

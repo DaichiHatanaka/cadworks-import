@@ -128,7 +128,9 @@ describe("useMatchingState", () => {
           mockTbomRecords[1]!, // VALVE
         );
         expect(linkResult.success).toBe(false);
-        expect(linkResult.reason).toBe("list_type_mismatch");
+        if (!linkResult.success) {
+          expect(linkResult.reason).toBe("list_type_mismatch");
+        }
       });
 
       // 状態が変更されていないことを確認

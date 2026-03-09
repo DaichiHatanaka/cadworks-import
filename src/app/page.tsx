@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { saveWorkspaceParams } from "@/lib/workspace-params";
 
 const INPUT_BASE =
   "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500";
@@ -10,9 +11,55 @@ export default function Home() {
   const router = useRouter();
 
   // 共通工番
-  const [jobNo, setJobNo] = useState("2024-001");
+  const [jobNo, setJobNo] = useState("FULL-TEST-001");
 
-  // Step 3（マッチング）追加フィールド
+  // リセット状態管理
+  const [resetting, setResetting] = useState(false);
+  const [resetMessage, setResetMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+
+  const handleReset = useCallback(async () => {
+    const trimmed = jobNo.trim();
+    if (!trimmed) return;
+
+    if (
+      !window.confirm(
+        `工番「${trimmed}」の全データをリセットしますか？\n（インポートデータ・紐付け結果・N-BOM データ等がすべて削除されます）`,
+      )
+    ) {
+      return;
+    }
+
+    setResetting(true);
+    setResetMessage(null);
+
+    try {
+      const res = await fetch("/api/jobs/reset", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jobNo: trimmed }),
+      });
+      const result = await res.json();
+
+      if (res.ok && result.success) {
+        const total = Object.values(result.deletedCounts as Record<string, number>).reduce(
+          (a, b) => a + b,
+          0,
+        );
+        setResetMessage({ type: "success", text: `リセット完了（${total}件削除）` });
+      } else {
+        setResetMessage({ type: "error", text: result.error || "リセットに失敗しました" });
+      }
+    } catch {
+      setResetMessage({ type: "error", text: "リセット中にエラーが発生しました" });
+    } finally {
+      setResetting(false);
+    }
+  }, [jobNo]);
+
+  // Step 3（マスター作成）追加フィールド
   const [caseNo, setCaseNo] = useState("A");
   const [constructionType, setConstructionType] = useState("新築");
   const [listTypes, setListTypes] = useState("標準");
@@ -41,13 +88,32 @@ export default function Home() {
               （各ステップで共通して使用します）
             </span>
           </label>
-          <input
-            type="text"
-            value={jobNo}
-            onChange={(e) => setJobNo(e.target.value)}
-            placeholder="例: 2024-001"
-            className={`mt-2 ${INPUT_BASE} py-2.5 text-base`}
-          />
+          <div className="mt-2 flex gap-2">
+            <input
+              type="text"
+              value={jobNo}
+              onChange={(e) => {
+                setJobNo(e.target.value);
+                setResetMessage(null);
+              }}
+              placeholder="例: 2024-001"
+              className={`${INPUT_BASE} flex-1 py-2.5 text-base`}
+            />
+            <button
+              onClick={handleReset}
+              disabled={!hasJobNo || resetting}
+              className="shrink-0 rounded-lg border border-red-200 bg-red-50 px-4 py-2.5 text-sm font-medium text-red-700 transition-colors hover:bg-red-100 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-400"
+            >
+              {resetting ? "リセット中..." : "データリセット"}
+            </button>
+          </div>
+          {resetMessage && (
+            <p
+              className={`mt-2 text-sm ${resetMessage.type === "success" ? "text-green-700" : "text-red-700"}`}
+            >
+              {resetMessage.text}
+            </p>
+          )}
         </div>
 
         {/* フロー区切り */}
@@ -65,7 +131,7 @@ export default function Home() {
           <StepCard
             step={1}
             title="データインポート"
-            description="CAD または T-BOM データの CSV ファイルを取り込みます。マッチング前に必ず実施してください。"
+            description="CAD または T-BOM データの CSV ファイルを取り込みます。マスター作成前に必ず実施してください。"
             color="blue"
             enabled
             buttonLabel="インポート画面へ"
@@ -76,31 +142,35 @@ export default function Home() {
           <StepCard
             step={2}
             title="機器分割"
-            description="T-BOM で数量 2 以上の機器を 1 台ずつに分割します。マッチング前の必須作業です。"
+            description="T-BOM で数量 2 以上の機器を 1 台ずつに分割します。マスター作成前の必須作業です。"
             color="orange"
             enabled={hasJobNo}
             disabledReason="工番を入力してください"
             buttonLabel="機器分割を開始"
-            onStart={() => router.push(`/splitting?jobNo=${encodeURIComponent(jobNo.trim())}`)}
+            onStart={() => {
+              saveWorkspaceParams({ jobNo: jobNo.trim() });
+              router.push(`/splitting?jobNo=${encodeURIComponent(jobNo.trim())}`);
+            }}
           />
 
-          {/* Step 3: マッチング */}
+          {/* Step 3: マスター作成 */}
           <StepCard
             step={3}
-            title="マッチング"
+            title="マスター作成"
             description="CAD データと T-BOM データを紐づけます。追加情報を入力してから開始してください。"
             color="green"
             enabled={hasAllMatchingFields}
             disabledReason="全項目を入力してください"
-            buttonLabel="マッチングを開始"
+            buttonLabel="マスター作成を開始"
             onStart={() => {
-              const params = new URLSearchParams({
+              const trimmed = {
                 jobNo: jobNo.trim(),
                 caseNo: caseNo.trim(),
                 constructionType: constructionType.trim(),
                 listTypes: listTypes.trim(),
-              });
-              router.push(`/matching?${params.toString()}`);
+              };
+              saveWorkspaceParams(trimmed);
+              router.push(`/matching?${new URLSearchParams(trimmed).toString()}`);
             }}
             extraFields={
               <div className="mt-3 space-y-2 border-t border-gray-100 pt-3">
@@ -147,12 +217,15 @@ export default function Home() {
           <StepCard
             step={4}
             title="メイン画面 (N-BOM)"
-            description="マッチング完了後の機器積算メイン画面。属性タグベースで多次元ビュー切替・インライン編集が可能です。"
+            description="マスター作成完了後の機器積算メイン画面。属性タグベースで多次元ビュー切替・インライン編集が可能です。"
             color="purple"
             enabled={hasJobNo}
             disabledReason="工番を入力してください"
             buttonLabel="N-BOM を開く"
-            onStart={() => router.push(`/nbom?jobNo=${encodeURIComponent(jobNo.trim())}`)}
+            onStart={() => {
+              saveWorkspaceParams({ jobNo: jobNo.trim() });
+              router.push(`/nbom?jobNo=${encodeURIComponent(jobNo.trim())}`);
+            }}
           />
         </div>
 

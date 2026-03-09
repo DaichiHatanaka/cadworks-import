@@ -29,7 +29,7 @@ describe("useLock", () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({ success: true }),
-      });
+      } as Response);
 
       const { result } = renderHook(() =>
         useLock({
@@ -72,7 +72,7 @@ describe("useLock", () => {
         ok: false,
         status: 409,
         json: async () => lockInfo,
-      });
+      } as Response);
 
       const { result } = renderHook(() =>
         useLock({
@@ -101,7 +101,7 @@ describe("useLock", () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({ success: true }),
-      });
+      } as Response);
 
       const { result } = renderHook(() =>
         useLock({
@@ -128,7 +128,7 @@ describe("useLock", () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({ success: true }),
-      });
+      } as Response);
 
       const { result } = renderHook(() =>
         useLock({
@@ -156,13 +156,13 @@ describe("useLock", () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({ success: true }),
-      });
+      } as Response);
 
       // ロック解放成功
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({ success: true }),
-      });
+      } as Response);
 
       const { result } = renderHook(() =>
         useLock({
@@ -198,7 +198,7 @@ describe("useLock", () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({ success: true }),
-      });
+      } as Response);
 
       mockSendBeacon.mockReturnValue(true);
 
@@ -232,7 +232,7 @@ describe("useLock", () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({ success: true }),
-      });
+      } as Response);
 
       mockSendBeacon.mockReturnValue(true);
 

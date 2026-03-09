@@ -13,7 +13,7 @@ function getLast5Digits(idCount: string): string {
  *
  * マッチングルール:
  * 1. LIST_TYPE が一致する T-BOM レコードから KID で対応先を探索
- * 2. ID_COUNT が完全一致 → "saved" ステータス
+ * 2. ID_COUNT が完全一致 → "unsaved" ステータス（確信度: 高）
  * 3. ID_COUNT の下5桁が一致 → "unsaved" ステータス
  * 4. それ以外 → 未紐付け
  */
@@ -57,7 +57,7 @@ export function executeAutoLink(
         id: `auto-link-${pairCounter}`,
         cad,
         tbom: exactMatch,
-        status: "saved",
+        status: "unsaved",
       });
       matchedTbomIds.add(exactMatch.id);
       continue;

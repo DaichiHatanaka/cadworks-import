@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
+import type { NextRequest } from "next/server";
 import { POST } from "./route";
 import { getDb } from "@/db";
 
@@ -54,7 +55,7 @@ describe("POST /api/matching/save", () => {
       },
     });
 
-    const response = await POST(request);
+    const response = await POST(request as NextRequest);
     const data = await response.json();
 
     expect(response.status).toBe(200);
@@ -84,7 +85,7 @@ describe("POST /api/matching/save", () => {
       },
     });
 
-    const response = await POST(request);
+    const response = await POST(request as NextRequest);
 
     expect(response.status).toBe(409);
   });
@@ -98,7 +99,7 @@ describe("POST /api/matching/save", () => {
       },
     });
 
-    const response = await POST(request);
+    const response = await POST(request as NextRequest);
 
     expect(response.status).toBe(400);
   });

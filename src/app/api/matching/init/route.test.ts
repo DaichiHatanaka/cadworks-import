@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
+import type { NextRequest } from "next/server";
 import { GET } from "./route";
 import { getDb } from "@/db";
 
@@ -84,7 +85,7 @@ describe("GET /api/matching/init", () => {
       "http://localhost:3000/api/matching/init?jobNo=JOB001&caseNo=CASE01&constructionType=NEW&listTypes=PUMP",
     );
 
-    const response = await GET(request);
+    const response = await GET(request as NextRequest);
     const data = await response.json();
 
     expect(response.status).toBe(200);
@@ -98,7 +99,7 @@ describe("GET /api/matching/init", () => {
   it("必須パラメータが不足している場合は 400 エラーを返す", async () => {
     const request = new Request("http://localhost:3000/api/matching/init");
 
-    const response = await GET(request);
+    const response = await GET(request as NextRequest);
 
     expect(response.status).toBe(400);
   });
@@ -116,7 +117,7 @@ describe("GET /api/matching/init", () => {
       "http://localhost:3000/api/matching/init?jobNo=NOTFOUND&caseNo=CASE01&constructionType=NEW&listTypes=PUMP",
     );
 
-    const response = await GET(request);
+    const response = await GET(request as NextRequest);
 
     expect(response.status).toBe(404);
   });

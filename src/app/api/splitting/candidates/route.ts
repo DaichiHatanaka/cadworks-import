@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { inArray } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 import { getDb } from "@/db";
 import { tbomData } from "@/db/schema";
 import { canAutoSplit, parseKikiNo, SPLIT_TARGET_LIST_TYPES } from "@/lib/splitting/split-logic";
@@ -13,15 +13,17 @@ export async function GET(req: NextRequest) {
 
   const db = getDb();
 
-  // 対象リストタイプのレコードを取得
+  // 対象リストタイプ かつ 工番一致のレコードを取得
   const rows = await db
     .select()
     .from(tbomData)
-    .where(inArray(tbomData.listType, [...SPLIT_TARGET_LIST_TYPES]));
+    .where(
+      and(eq(tbomData.jobNo, jobNo), inArray(tbomData.listType, [...SPLIT_TARGET_LIST_TYPES])),
+    );
 
-  // 工番フィルタ + qtyOrd >= 2 フィルタ（JS側）
+  // qtyOrd >= 2 フィルタ
   const candidates = rows
-    .filter((row) => row.jobNo === jobNo && parseInt(row.qtyOrd, 10) >= 2)
+    .filter((row) => parseInt(row.qtyOrd, 10) >= 2)
     .map((row) => {
       const auto = canAutoSplit(row.kikiNo, row.qtyOrd);
       const parsed = auto ? parseKikiNo(row.kikiNo) : null;

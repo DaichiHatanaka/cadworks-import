@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState, useCallback } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import Link from "next/link";
+import { saveWorkspaceParams } from "@/lib/workspace-params";
 import { useNbomState } from "@/lib/nbom/use-nbom-state";
 import { useViewState } from "@/lib/nbom/use-view-state";
 import { useGridState } from "@/lib/nbom/use-grid-state";
@@ -18,6 +19,10 @@ import DetailPanel from "./DetailPanel";
 import SelectionProgressDialog from "./SelectionProgressDialog";
 
 export default function NbomWorkspace({ jobNo }: { jobNo: string }) {
+  useEffect(() => {
+    saveWorkspaceParams({ jobNo });
+  }, [jobNo]);
+
   const nbom = useNbomState(jobNo);
   const view = useViewState();
   const grid = useGridState();

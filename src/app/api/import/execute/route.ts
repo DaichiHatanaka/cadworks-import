@@ -53,38 +53,33 @@ export async function POST(request: Request) {
     const db = getDb();
     const table = dataType === "cad" ? cwxData : tbomData;
 
-    // Execute import in a transaction
-    const result = await db.transaction(async (tx) => {
-      // Check for existing data with the same jobNo
-      const existing = await tx.select().from(table).where(eq(table.jobNo, jobNo)).limit(1);
+    // Check for existing data with the same jobNo
+    const existing = await db.select().from(table).where(eq(table.jobNo, jobNo)).limit(1);
 
-      if (existing.length > 0) {
-        throw new ConflictError(`工番 ${jobNo} のデータは既に存在します`);
-      }
+    if (existing.length > 0) {
+      throw new ConflictError(`工番 ${jobNo} のデータは既に存在します`, jobNo);
+    }
 
-      // Transform data to match database schema
-      const dbRows = rows.map((row) => ({
-        id: row.id,
-        jobNo: row.jobNo,
-        listType: row.listType,
-        kid: row.kid,
-        idCount: row.idCount,
-        kikiNo: row.kikiNo,
-        kikiBame: row.kikiBame,
-        qtyOrd: row.qtyOrd,
-        shortSpec: row.shortSpec,
-        ...(dataType === "cad" && "cwxLinkedFlg" in row ? { cwxLinkedFlg: row.cwxLinkedFlg } : {}),
-      }));
+    // Transform data to match database schema
+    const dbRows = rows.map((row) => ({
+      id: row.id,
+      jobNo: row.jobNo,
+      listType: row.listType,
+      kid: row.kid,
+      idCount: row.idCount,
+      kikiNo: row.kikiNo,
+      kikiBame: row.kikiBame,
+      qtyOrd: row.qtyOrd,
+      shortSpec: row.shortSpec,
+      ...(dataType === "cad" && "cwxLinkedFlg" in row ? { cwxLinkedFlg: row.cwxLinkedFlg } : {}),
+    }));
 
-      // Batch insert
-      await tx.insert(table).values(dbRows);
-
-      return { insertedCount: rows.length };
-    });
+    // Batch insert
+    await db.insert(table).values(dbRows);
 
     return NextResponse.json({
       success: true,
-      insertedCount: result.insertedCount,
+      insertedCount: rows.length,
       jobNo,
     });
   } catch (error) {

@@ -128,7 +128,7 @@ export function SplittingTable({ candidates, onSplit }: SplittingTableProps) {
                         type="text"
                         value={state?.editedKikiNo ?? candidate.kikiNo}
                         onChange={(e) => handleEdit(candidate.id, e.target.value)}
-                        className="w-full rounded border border-gray-300 px-2 py-1 text-sm focus:border-blue-500 focus:outline-none"
+                        className="w-full rounded border border-gray-300 px-2 py-1 text-sm text-gray-900 focus:border-blue-500 focus:outline-none"
                         placeholder="機器番号を編集..."
                       />
                     ) : (

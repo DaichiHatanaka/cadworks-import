@@ -1,0 +1,985 @@
+{
+  "header": {
+    "jobNo": "FULL-TEST-001",
+    "caseNo": "A",
+    "constructionType": "新築",
+    "screenTitle": "標準 データ紐付け"
+  },
+  "unlinkedCad": [
+    {
+      "id": "cad-ft-017",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L009",
+      "kid": "K017",
+      "idCount": "1",
+      "kikiNo": "VF-002",
+      "kikiBame": "排気ファン",
+      "qtyOrd": "1",
+      "shortSpec": "壁付型 200φ",
+      "cwxLinkedFlg": null
+    }
+  ],
+  "unlinkedTbom": [
+    {
+      "id": "tbom-ft-017",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L009",
+      "kid": "K060",
+      "idCount": "1",
+      "kikiNo": "VF-060",
+      "kikiBame": "工場換気扇",
+      "qtyOrd": "1",
+      "shortSpec": "大型 500φ"
+    },
+    {
+      "id": "tbom-ft-025",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L121",
+      "kid": "K105",
+      "idCount": "0",
+      "kikiNo": "FI-501",
+      "kikiBame": "流量計",
+      "qtyOrd": "2",
+      "shortSpec": "面積式 25A"
+    },
+    {
+      "id": "tbom-ft-026",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L122",
+      "kid": "K106",
+      "idCount": "0",
+      "kikiNo": "PI-601A-C",
+      "kikiBame": "圧力計",
+      "qtyOrd": "3",
+      "shortSpec": "隔膜式"
+    },
+    {
+      "id": "tbom-ft-027",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L121",
+      "kid": "K107",
+      "idCount": "0",
+      "kikiNo": "FI-701A~D",
+      "kikiBame": "流量計",
+      "qtyOrd": "3",
+      "shortSpec": "コリオリ式"
+    },
+    {
+      "id": "tbom-ft-022-1",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L152",
+      "kid": "K104",
+      "idCount": "1",
+      "kikiNo": "HV-401A",
+      "kikiBame": "手動弁",
+      "qtyOrd": "1",
+      "shortSpec": "ゲート弁 50A"
+    },
+    {
+      "id": "tbom-ft-022-2",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L152",
+      "kid": "K104",
+      "idCount": "2",
+      "kikiNo": "HV-401B",
+      "kikiBame": "手動弁",
+      "qtyOrd": "1",
+      "shortSpec": "ゲート弁 50A"
+    },
+    {
+      "id": "tbom-ft-022-3",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L152",
+      "kid": "K104",
+      "idCount": "3",
+      "kikiNo": "HV-401C",
+      "kikiBame": "手動弁",
+      "qtyOrd": "1",
+      "shortSpec": "ゲート弁 50A"
+    },
+    {
+      "id": "tbom-ft-022-4",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L152",
+      "kid": "K104",
+      "idCount": "4",
+      "kikiNo": "HV-401D",
+      "kikiBame": "手動弁",
+      "qtyOrd": "1",
+      "shortSpec": "ゲート弁 50A"
+    },
+    {
+      "id": "tbom-ft-022-5",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L152",
+      "kid": "K104",
+      "idCount": "5",
+      "kikiNo": "HV-401E",
+      "kikiBame": "手動弁",
+      "qtyOrd": "1",
+      "shortSpec": "ゲート弁 50A"
+    },
+    {
+      "id": "tbom-ft-024-1",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L162",
+      "kid": "K109",
+      "idCount": "1",
+      "kikiNo": "ST-901A",
+      "kikiBame": "円錐ストレーナー",
+      "qtyOrd": "1",
+      "shortSpec": "SUS304 50A"
+    },
+    {
+      "id": "tbom-ft-024-2",
+      "jobNo": "FULL-TEST-001",
+      "listType": "L162",
+      "kid": "K109",
+      "idCount": "2",
+      "kikiNo": "ST-901B",
+      "kikiBame": "円錐ストレーナー",
+      "qtyOrd": "1",
+      "shortSpec": "SUS304 50A"
+    }
+  ],
+  "linkedPairs": [
+    {
+      "id": "link-cad-ft-004",
+      "cad": {
+        "id": "cad-ft-004",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K004",
+        "idCount": "10000004",
+        "kikiNo": "P-004",
+        "kikiBame": "横型渦巻ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "横型渦巻ポンプ SUS316",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-004",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K004",
+        "idCount": "5000004",
+        "kikiNo": "P-004",
+        "kikiBame": "横型渦巻ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "横型渦巻ポンプ SUS316"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "link-cad-ft-005",
+      "cad": {
+        "id": "cad-ft-005",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K005",
+        "idCount": "20000005",
+        "kikiNo": "P-005",
+        "kikiBame": "ダイヤフラムポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "ダイヤフラム SUS316",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-005",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K005",
+        "idCount": "8000005",
+        "kikiNo": "P-005",
+        "kikiBame": "ダイヤフラムポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "ダイヤフラム SUS316"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "link-cad-ft-007",
+      "cad": {
+        "id": "cad-ft-007",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K007",
+        "idCount": "1",
+        "kikiNo": "P-007",
+        "kikiBame": "水中ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "水中ポンプ SUS304",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-009",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K051",
+        "idCount": "1",
+        "kikiNo": "P-051",
+        "kikiBame": "ブースターポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "横型渦巻ポンプ SUS304 Q=10.0m3/h H=30m"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "link-cad-ft-006",
+      "cad": {
+        "id": "cad-ft-006",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K006",
+        "idCount": "1",
+        "kikiNo": "P-006",
+        "kikiBame": "横型渦巻ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "横型渦巻ポンプ",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-008",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K050",
+        "idCount": "1",
+        "kikiNo": "P-050",
+        "kikiBame": "予備ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "マグネット SUS316"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-1",
+      "cad": {
+        "id": "cad-ft-001",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K001",
+        "idCount": "1",
+        "kikiNo": "P-001",
+        "kikiBame": "横型渦巻ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "横型渦巻ポンプ SUS304 Q=5.0m3/h H=20m",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-001",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K001",
+        "idCount": "1",
+        "kikiNo": "P-001",
+        "kikiBame": "横型渦巻ポンプ",
+        "qtyOrd": "2",
+        "shortSpec": "横型渦巻ポンプ SUS304 Q=5.0m3/h H=20m"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-2",
+      "cad": {
+        "id": "cad-ft-002",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K002",
+        "idCount": "1",
+        "kikiNo": "P-002",
+        "kikiBame": "ダイヤフラムポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "ダイヤフラム PP Q=3.0m3/h",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-002",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K002",
+        "idCount": "1",
+        "kikiNo": "P-002",
+        "kikiBame": "ダイヤフラムポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "ダイヤフラム PP Q=3.0m3/h"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-3",
+      "cad": {
+        "id": "cad-ft-003",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K003",
+        "idCount": "1",
+        "kikiNo": "P-003",
+        "kikiBame": "マグネットポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "マグネット PP",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-003",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K003",
+        "idCount": "1",
+        "kikiNo": "P-003",
+        "kikiBame": "マグネットポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "マグネット PP"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-4",
+      "cad": {
+        "id": "cad-ft-008",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K008",
+        "idCount": "1",
+        "kikiNo": "P-008",
+        "kikiBame": "ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": null,
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-006",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K008",
+        "idCount": "1",
+        "kikiNo": "P-008",
+        "kikiBame": "ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": null
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-5",
+      "cad": {
+        "id": "cad-ft-009",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K009",
+        "idCount": "1",
+        "kikiNo": "P-009",
+        "kikiBame": "横型渦巻ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "横型渦巻ポンプ SUS304 EBARA-FSA-32 Q=5.0m3/h H=20m",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-007",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L002",
+        "kid": "K009",
+        "idCount": "1",
+        "kikiNo": "P-009",
+        "kikiBame": "横型渦巻ポンプ",
+        "qtyOrd": "1",
+        "shortSpec": "横型渦巻ポンプ SUS304 EBARA-FSA-32"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-6",
+      "cad": {
+        "id": "cad-ft-010",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L072",
+        "kid": "K010",
+        "idCount": "1",
+        "kikiNo": "T-001",
+        "kikiBame": "樹脂タンク",
+        "qtyOrd": "1",
+        "shortSpec": "円筒型 PP 呼び容量200L",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-010",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L072",
+        "kid": "K010",
+        "idCount": "1",
+        "kikiNo": "T-001",
+        "kikiBame": "PP製タンク",
+        "qtyOrd": "1",
+        "shortSpec": "円筒型 PP 呼び容量200L"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-7",
+      "cad": {
+        "id": "cad-ft-011",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L072",
+        "kid": "K011",
+        "idCount": "1",
+        "kikiNo": "T-002",
+        "kikiBame": "樹脂タンク",
+        "qtyOrd": "1",
+        "shortSpec": "角型 PVDF 呼び容量300L",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-011",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L072",
+        "kid": "K011",
+        "idCount": "1",
+        "kikiNo": "T-002",
+        "kikiBame": "PVDF製タンク",
+        "qtyOrd": "1",
+        "shortSpec": "角型 PVDF 呼び容量300L"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-8",
+      "cad": {
+        "id": "cad-ft-012",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L051",
+        "kid": "K012",
+        "idCount": "1",
+        "kikiNo": "HX-001",
+        "kikiBame": "熱交換器",
+        "qtyOrd": "1",
+        "shortSpec": "シェルアンドチューブ SUS304",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-012",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L051",
+        "kid": "K012",
+        "idCount": "1",
+        "kikiNo": "HX-001",
+        "kikiBame": "熱交換器",
+        "qtyOrd": "1",
+        "shortSpec": "シェルアンドチューブ SUS304"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-9",
+      "cad": {
+        "id": "cad-ft-013",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L051",
+        "kid": "K013",
+        "idCount": "1",
+        "kikiNo": "HX-002",
+        "kikiBame": "熱交換器",
+        "qtyOrd": "1",
+        "shortSpec": "プレート式 SUS316",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-013",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L051",
+        "kid": "K013",
+        "idCount": "1",
+        "kikiNo": "HX-002",
+        "kikiBame": "プレート式熱交換器",
+        "qtyOrd": "1",
+        "shortSpec": "プレート式 SUS316"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-10",
+      "cad": {
+        "id": "cad-ft-014",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L071",
+        "kid": "K014",
+        "idCount": "1",
+        "kikiNo": "V-001",
+        "kikiBame": "ベッセル",
+        "qtyOrd": "1",
+        "shortSpec": "竪型 SUS304 呼び容量500L",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-014",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L071",
+        "kid": "K014",
+        "idCount": "1",
+        "kikiNo": "V-001",
+        "kikiBame": "竪型ベッセル",
+        "qtyOrd": "1",
+        "shortSpec": "竪型 SUS304 呼び容量500L"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-11",
+      "cad": {
+        "id": "cad-ft-015",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L071",
+        "kid": "K015",
+        "idCount": "1",
+        "kikiNo": "V-002",
+        "kikiBame": "ベッセル",
+        "qtyOrd": "1",
+        "shortSpec": "竪型 SUS316L 呼び容量300L",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-015",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L071",
+        "kid": "K015",
+        "idCount": "1",
+        "kikiNo": "V-002",
+        "kikiBame": "竪型ベッセル",
+        "qtyOrd": "1",
+        "shortSpec": "竪型 SUS316L 呼び容量300L"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-12",
+      "cad": {
+        "id": "cad-ft-016",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L009",
+        "kid": "K016",
+        "idCount": "1",
+        "kikiNo": "VF-001",
+        "kikiBame": "換気扇",
+        "qtyOrd": "1",
+        "shortSpec": "天井埋込型 150φ",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-016",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L009",
+        "kid": "K016",
+        "idCount": "1",
+        "kikiNo": "VF-001",
+        "kikiBame": "換気扇",
+        "qtyOrd": "3",
+        "shortSpec": "天井埋込型 150φ"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-13",
+      "cad": {
+        "id": "cad-ft-018",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K100",
+        "idCount": "1",
+        "kikiNo": "FI-101A",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "電磁式 80A",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-018-1",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K100",
+        "idCount": "1",
+        "kikiNo": "FI-101A",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "電磁式 80A"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-14",
+      "cad": {
+        "id": "cad-ft-019",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K100",
+        "idCount": "2",
+        "kikiNo": "FI-101B",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "電磁式 80A",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-018-2",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K100",
+        "idCount": "2",
+        "kikiNo": "FI-101B",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "電磁式 80A"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-15",
+      "cad": {
+        "id": "cad-ft-020",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K100",
+        "idCount": "3",
+        "kikiNo": "FI-101C",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "電磁式 80A",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-018-3",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K100",
+        "idCount": "3",
+        "kikiNo": "FI-101C",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "電磁式 80A"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-16",
+      "cad": {
+        "id": "cad-ft-021",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K101",
+        "idCount": "1",
+        "kikiNo": "FI-102A",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "超音波式 50A",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-019-1",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K101",
+        "idCount": "1",
+        "kikiNo": "FI-102A",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "超音波式 50A"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-17",
+      "cad": {
+        "id": "cad-ft-022",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K101",
+        "idCount": "2",
+        "kikiNo": "FI-102B",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "超音波式 50A",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-019-2",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L121",
+        "kid": "K101",
+        "idCount": "2",
+        "kikiNo": "FI-102B",
+        "kikiBame": "流量計",
+        "qtyOrd": "1",
+        "shortSpec": "超音波式 50A"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-18",
+      "cad": {
+        "id": "cad-ft-023",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L122",
+        "kid": "K102",
+        "idCount": "1",
+        "kikiNo": "PI-201A",
+        "kikiBame": "圧力計",
+        "qtyOrd": "1",
+        "shortSpec": "ブルドン管式",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-020-1",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L122",
+        "kid": "K102",
+        "idCount": "1",
+        "kikiNo": "PI-201A",
+        "kikiBame": "圧力計",
+        "qtyOrd": "1",
+        "shortSpec": "ブルドン管式"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-19",
+      "cad": {
+        "id": "cad-ft-024",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L122",
+        "kid": "K102",
+        "idCount": "2",
+        "kikiNo": "PI-201B",
+        "kikiBame": "圧力計",
+        "qtyOrd": "1",
+        "shortSpec": "ブルドン管式",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-020-2",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L122",
+        "kid": "K102",
+        "idCount": "2",
+        "kikiNo": "PI-201B",
+        "kikiBame": "圧力計",
+        "qtyOrd": "1",
+        "shortSpec": "ブルドン管式"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-20",
+      "cad": {
+        "id": "cad-ft-025",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L122",
+        "kid": "K102",
+        "idCount": "3",
+        "kikiNo": "PI-201C",
+        "kikiBame": "圧力計",
+        "qtyOrd": "1",
+        "shortSpec": "ブルドン管式",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-020-3",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L122",
+        "kid": "K102",
+        "idCount": "3",
+        "kikiNo": "PI-201C",
+        "kikiBame": "圧力計",
+        "qtyOrd": "1",
+        "shortSpec": "ブルドン管式"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-21",
+      "cad": {
+        "id": "cad-ft-026",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L151",
+        "kid": "K103",
+        "idCount": "1",
+        "kikiNo": "CV-301A",
+        "kikiBame": "自動弁",
+        "qtyOrd": "1",
+        "shortSpec": "バタフライ弁 100A",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-021-1",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L151",
+        "kid": "K103",
+        "idCount": "1",
+        "kikiNo": "CV-301A",
+        "kikiBame": "自動弁",
+        "qtyOrd": "1",
+        "shortSpec": "バタフライ弁 100A"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-22",
+      "cad": {
+        "id": "cad-ft-027",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L151",
+        "kid": "K103",
+        "idCount": "2",
+        "kikiNo": "CV-301B",
+        "kikiBame": "自動弁",
+        "qtyOrd": "1",
+        "shortSpec": "バタフライ弁 100A",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-021-2",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L151",
+        "kid": "K103",
+        "idCount": "2",
+        "kikiNo": "CV-301B",
+        "kikiBame": "自動弁",
+        "qtyOrd": "1",
+        "shortSpec": "バタフライ弁 100A"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-23",
+      "cad": {
+        "id": "cad-ft-028",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L151",
+        "kid": "K103",
+        "idCount": "3",
+        "kikiNo": "CV-301C",
+        "kikiBame": "自動弁",
+        "qtyOrd": "1",
+        "shortSpec": "バタフライ弁 100A",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-021-3",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L151",
+        "kid": "K103",
+        "idCount": "3",
+        "kikiNo": "CV-301C",
+        "kikiBame": "自動弁",
+        "qtyOrd": "1",
+        "shortSpec": "バタフライ弁 100A"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-24",
+      "cad": {
+        "id": "cad-ft-029",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L151",
+        "kid": "K103",
+        "idCount": "4",
+        "kikiNo": "CV-301D",
+        "kikiBame": "自動弁",
+        "qtyOrd": "1",
+        "shortSpec": "バタフライ弁 100A",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-021-4",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L151",
+        "kid": "K103",
+        "idCount": "4",
+        "kikiNo": "CV-301D",
+        "kikiBame": "自動弁",
+        "qtyOrd": "1",
+        "shortSpec": "バタフライ弁 100A"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-25",
+      "cad": {
+        "id": "cad-ft-030",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L841",
+        "kid": "K108",
+        "idCount": "1",
+        "kikiNo": "TE-801A",
+        "kikiBame": "温度検出器",
+        "qtyOrd": "1",
+        "shortSpec": "Pt100 熱電対",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-023-1",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L841",
+        "kid": "K108",
+        "idCount": "1",
+        "kikiNo": "TE-801A",
+        "kikiBame": "温度検出器",
+        "qtyOrd": "1",
+        "shortSpec": "Pt100 熱電対"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-26",
+      "cad": {
+        "id": "cad-ft-031",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L841",
+        "kid": "K108",
+        "idCount": "2",
+        "kikiNo": "TE-801B",
+        "kikiBame": "温度検出器",
+        "qtyOrd": "1",
+        "shortSpec": "Pt100 熱電対",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-023-2",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L841",
+        "kid": "K108",
+        "idCount": "2",
+        "kikiNo": "TE-801B",
+        "kikiBame": "温度検出器",
+        "qtyOrd": "1",
+        "shortSpec": "Pt100 熱電対"
+      },
+      "status": "saved"
+    },
+    {
+      "id": "auto-link-27",
+      "cad": {
+        "id": "cad-ft-032",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L841",
+        "kid": "K108",
+        "idCount": "3",
+        "kikiNo": "TE-801C",
+        "kikiBame": "温度検出器",
+        "qtyOrd": "1",
+        "shortSpec": "Pt100 熱電対",
+        "cwxLinkedFlg": null
+      },
+      "tbom": {
+        "id": "tbom-ft-023-3",
+        "jobNo": "FULL-TEST-001",
+        "listType": "L841",
+        "kid": "K108",
+        "idCount": "3",
+        "kikiNo": "TE-801C",
+        "kikiBame": "温度検出器",
+        "qtyOrd": "1",
+        "shortSpec": "Pt100 熱電対"
+      },
+      "status": "saved"
+    }
+  ],
+  "stats": { "totalCadCount": 32, "linkedCount": 31 }
+}

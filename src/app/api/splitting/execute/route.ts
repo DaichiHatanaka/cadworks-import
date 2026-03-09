@@ -32,31 +32,29 @@ export async function POST(req: NextRequest) {
 
   const originalMap = new Map(originals.map((r) => [r.id, r]));
 
-  // トランザクション: 元レコード削除 → 分割後レコード挿入
-  await db.transaction(async (tx) => {
-    for (const item of items) {
-      const original = originalMap.get(item.id);
-      if (!original) continue;
+  // 元レコード削除 → 分割後レコード挿入
+  for (const item of items) {
+    const original = originalMap.get(item.id);
+    if (!original) continue;
 
-      // 元レコード削除
-      await tx.delete(tbomData).where(eq(tbomData.id, item.id));
+    // 元レコード削除
+    await db.delete(tbomData).where(eq(tbomData.id, item.id));
 
-      // 分割後レコードを挿入
-      for (let i = 0; i < item.kikiNos.length; i++) {
-        await tx.insert(tbomData).values({
-          id: `${item.id}-${i + 1}`,
-          jobNo: original.jobNo,
-          listType: original.listType,
-          kid: original.kid,
-          idCount: original.idCount,
-          kikiNo: item.kikiNos[i],
-          kikiBame: original.kikiBame,
-          qtyOrd: "1",
-          shortSpec: original.shortSpec,
-        });
-      }
-    }
-  });
+    // 分割後レコードを挿入
+    const splitRows = item.kikiNos.map((kikiNo, i) => ({
+      id: `${item.id}-${i + 1}`,
+      jobNo: original.jobNo,
+      listType: original.listType,
+      kid: original.kid,
+      idCount: String(i + 1),
+      kikiNo,
+      kikiBame: original.kikiBame,
+      qtyOrd: "1",
+      shortSpec: original.shortSpec,
+    }));
+
+    await db.insert(tbomData).values(splitRows);
+  }
 
   const splitCount = items.reduce((sum, item) => sum + item.kikiNos.length, 0);
 
